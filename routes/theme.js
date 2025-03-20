@@ -3,8 +3,12 @@ const router = express.Router()
 
 router.post('/set', (req, res) => {
   const { theme } = req.body
-  res.cookie('theme', theme, { maxAge: 7 * 24 * 60 * 60 * 1000 })
-  res.json({ message: 'Theme saved' })
+  if (theme === 'light' || theme === 'dark') {
+    res.cookie('theme', theme, { maxAge: 3600000 })
+    res.redirect('/')
+  } else {
+    res.redirect('/')
+  }
 })
 
 module.exports = router

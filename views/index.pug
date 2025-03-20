@@ -3,11 +3,26 @@ html
   head
     title Home
     link(rel="icon" href="/favicon.ico")
-  body
+    link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
+    style.
+      body {
+        transition: background 0.3s, color 0.3s;
+      }
+      body.light {
+        background: white;
+        color: black;
+      }
+      body.dark {
+        background: black;
+        color: white;
+      }
+  body(class=theme)
     h1 Welcome!
-    p Current theme: #{theme}
+    p Current theme: #{theme || 'light'}
     form(action="/theme/set" method="post")
       select(name="theme")
-        option(value="light") Light
-        option(value="dark") Dark
+        option(value="light" selected=(theme=='light')) Light
+        option(value="dark" selected=(theme=='dark')) Dark
       button(type="submit") Save theme
