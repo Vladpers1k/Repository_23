@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Home
+    link(rel="icon" href="/favicon.ico")
+  body
+    h1 Welcome!
+    p Current theme: #{theme}
+    form(action="/theme/set" method="post")
+      select(name="theme")
+        option(value="light") Light
+        option(value="dark") Dark
+      button(type="submit") Save theme
